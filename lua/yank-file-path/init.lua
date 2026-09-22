@@ -121,4 +121,9 @@ function M.yank_file_path_code_block(opts)
 	return text
 end
 
+--- This plugin is distributed under the MIT License.
+--- See the repository's `LICENSE` file for the full license text.
+---@tag yank-file-path-license
+---@toc_entry License
+
 return M

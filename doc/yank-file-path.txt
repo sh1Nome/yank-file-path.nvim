@@ -4,6 +4,7 @@
   YankFilePathOptions ........................... |yank-file-path-api-options|
   yank_file_path() ....................... |yank-file-path-api-yank-file-path|
   yank_file_path_code_block() ... |yank-file-path-api-yank-file-path-code-block|
+  License ........................................... |yank-file-path-license|
 ------------------------------------------------------------------------------
                                                           *yank-file-path-intro*
 This plugin copies a path relative to Neovim's current working directory to
@@ -49,6 +50,11 @@ Parameters ~
 {opts} `(optional)` `(YankFilePathOptions)` See |yank-file-path-api-options|.
 Return ~
 `(string|nil)` copied text, or nil when the line range is invalid.
+
+------------------------------------------------------------------------------
+                                                        *yank-file-path-license*
+This plugin is distributed under the MIT License.
+See the repository's `LICENSE` file for the full license text.
 
 
  vim:tw=78:ts=8:noet:ft=help:norl:
