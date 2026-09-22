@@ -1,8 +1,23 @@
---- Copy a file path relative to Neovim's current working directory.
+--- *yank-file-path*  Copy file paths and code blocks to the clipboard
 ---
+---@toc
+
+--- This plugin copies a path relative to Neovim's current working directory to
+--- the clipboard. It can add a line range or include the buffer in a fenced
+--- code block.
+---
+--- Both public functions return the copied text.
+---@tag yank-file-path-intro
+---@toc_entry Introduction
+
+--- Options for selecting an inclusive, one-based line range.
+---
+--- Specify both fields to copy a line range.
 ---@class YankFilePathOptions
 ---@field start_line? integer One-based inclusive start line.
 ---@field end_line? integer One-based inclusive end line.
+---@tag yank-file-path-api-options
+---@toc_entry YankFilePathOptions
 
 local M = {}
 
@@ -46,8 +61,13 @@ end
 
 --- Copy the current file path, optionally with a line range, to the clipboard.
 ---
----@param opts? YankFilePathOptions
----@return string|nil copied text, or nil when the path or range is invalid.
+--- With no range, return the relative path. With a valid range, append a
+--- `#L<start>` or `#L<start>-L<end>` line reference.
+---
+---@param opts? YankFilePathOptions See |yank-file-path-api-options|.
+---@return string|nil copied text, or nil when the line range is invalid.
+---@tag yank-file-path-api-yank-file-path
+---@toc_entry yank_file_path()
 function M.yank_file_path(opts)
 	opts = opts or {}
 	local relative_path = get_relative_path()
@@ -65,10 +85,16 @@ function M.yank_file_path(opts)
 	return reference
 end
 
---- Copy the current file path and code block to the clipboard.
+--- Copy the current file path and buffer contents in a code block to the
+--- clipboard.
 ---
----@param opts? YankFilePathOptions
----@return string|nil copied text, or nil when the path or range is invalid.
+--- With no range, include the entire buffer. With a valid range, include only
+--- the specified lines.
+---
+---@param opts? YankFilePathOptions See |yank-file-path-api-options|.
+---@return string|nil copied text, or nil when the line range is invalid.
+---@tag yank-file-path-api-yank-file-path-code-block
+---@toc_entry yank_file_path_code_block()
 function M.yank_file_path_code_block(opts)
 	opts = opts or {}
 	local relative_path = get_relative_path()
