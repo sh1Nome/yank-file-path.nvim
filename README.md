@@ -2,6 +2,8 @@
 
 Copy file paths and code blocks to the clipboard.
 
+![](./demo/demo.gif)
+
 ## Features
 
 - Copy a path relative to Neovim's current working directory
